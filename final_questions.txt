@@ -1,0 +1,73 @@
+Q1: Academic integrity acknowledgement: Please affirm your acceptance of the integrity code. [0]
+
+Your answer [Yes/No]: Yes
+
+-------------------------------------------
+-------------------------------------------
+Q2.1:	The client class should be able to traverse the songs in the pool without knowing the underlying structure of how the songs are saved in the MusicPlayer. [5]
+
+Explanation: Implementing the Iterator design pattern allows the program to traverse the data without knowing its underlying representation. Iterable<T> works on Collections, so taking the Collection LinkedHashMap.values() enables us to use the iterator. To do so we override the iterator() method. 
+
+-------------------------------------------
+Q2.2:	The client class should be able to create and save playlists using the music app. The same song can be added to the playlist multiple times. A playlist can also be nested, i.e. any element in the playlist can be a playlist itself. [15]
+
+Explanation: The client class can use the createPlaylist() method in the music player to name and create a new playlist. This is a composite class that can contain both songs and playlists. The playlist and song classes implement the songSource interface and override the necessary methods. The client can add songs or playlists to any existing playlists with the respective functions in MusicPlayer. 
+
+
+-------------------------------------------
+Q2.3: The client class can add all the songs from a playlist to the queue. When added, the order of the songs in the playlist is maintained. [5]
+
+Explanation: The getSongs() method in the songSource implementations return a LinkedHashMap that can be parsed using .values() and a for loop. When the client passes in a playlist name to add to the queue, the playlist is first found in the stored playlists map, then the values taken in list form. The LinkedHashMap maintains the order the key/value pairs were inserted. 
+
+
+-------------------------------------------
+-------------------------------------------
+Q3.1: Support the two ways of client code can access the song in the queue, i.e. ordered play and shuffled play. [15]
+
+Explanation: Using a strategy pattern to create two implementations of iterators. One derives an iterator from a shuffled clone of the queue.
+
+
+-------------------------------------------
+Q3.2: The client code can specify using which order to playing queue at any time using the music app. [5]
+
+Explanation: We can call the set queue order method in the music app specifying an order with a string. This will update and reinitialize the order iterator according to the strategy.
+
+
+-------------------------------------------
+Q3.3: During your design, take consideration on how to avoid “null” when the queue is empty and when it reaches its end. [5]
+
+Explanation: we override the has next method to avoid going out of bounds. Keeping track of an index so that it hasNext returns false when the index < size of queue.
+
+
+-------------------------------------------
+Q3.4: Whenever the content of the queue is changed (songs added or removed), the playing order is reinitialized according to the latest status of the queue. [10]
+
+Explanation: I used the observer design pattern to allow the program to update and reinitialize the play order iterator. When the queue is changed, updates are made. 
+
+
+-------------------------------------------
+Q3.5: Write the unit test for the class representing the shuffled play strategy and achieve the 100% method coverage. [10] 
+
+Explanation: to achieve 100% method coverage, we only need to ensure that each method can be called.
+
+
+-------------------------------------------
+-------------------------------------------
+Q4.1: Using the provided Controller interface, achieve the support for both remote controller and voice controller for playing next either the song in the music player or radio station in the radio receiver. For the voice controller, please simply print some message using the Java print stream to mimic generating speech for the sake of this exam. [15]
+
+Explanation: Using the Controller interface, we implement voice and remote controllers to walk through the queue using the chosen iterator.
+
+
+-------------------------------------------
+Q4.2: Write a mock-up client code to showcase the complete code you have designed and implemented so far (from Questions 2-4) in the empty main method in the HomeEntertainmentSystem class. [10]
+
+Explanation: The client code shows adding to playlists and the queue, and also the use of the voice controller and shuffle/order setting functionality. 
+
+
+-------------------------------------------
+-------------------------------------------
+Q4.Takeaways/Feedback for this course [5]
+
+Your answer: Overall this course was hard work but very rewarding. I really enjoyed the lab exams and thought it was a good use of time to deeply understand the topics in this course. I wish we had more time but it was a great course overall!
+
+
